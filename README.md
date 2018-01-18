@@ -1,11 +1,9 @@
-# minerstat.com - Linux Beta 
+# Minerstat.com [Linux] -  v0.6 
 
 ![Version](https://img.shields.io/github/release/coinscrow/minerstat-linux.svg)
 ![Latest](https://img.shields.io/github/last-commit/coinscrow/minerstat-linux.svg)
 
 > [STABLE] it can run weeks without downtime!
-
-> with Hardware Monitor!
 
 # Dependencies
 - Linux Ubuntu / lUbuntu 16.04.3 LTS |RECOMMENDED|
@@ -17,7 +15,7 @@
 2) Create a new worker (Node, Linux , AMD/Nvidia)
 3) Mofify your configs in Config Editor -> Save
 
-# How to install on Linux?
+# How to install on Linux (Ubuntu) ?
 
 1) Open Terminal and Type:
 
@@ -68,7 +66,7 @@ Claymore-Equihash (AMD ZEC Miner)
 
 Claymore-Cryptonote (AMD XMR Miner)
 
-Ewbf-Equihash (AMD ZEC Miner)
+Ewbf-Equihash (Nvidia ZEC Miner)
 
 SGMiner (NVIDIA/AMD Multi Algo)
 
@@ -89,7 +87,4 @@ Have you got any idea to make it better?
 
 Feel free to write us a message: **app @ minerstat.com**
 
-
-Tested on Ubuntu 16.04 / lUbuntu 
-
-> © 2017 - https://minerstat.com - Mining Monitor
+> © 2017-2018 - https://minerstat.com - Mining Monitor

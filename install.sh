@@ -123,6 +123,19 @@ echo "----------------------------------------"
 echo ""
 fi
 
+
+echo -n "Install TeamViewer (y/n)? "
+read twi
+if echo "$twi" | grep -iq "^y" ;then
+    TWINSTALL="yes"
+else
+    TWINSTALL="no"
+fi
+
+if [ $TWINSTALL = "yes" ]; then
+sudo sh $(pwd)/bin/install_teamviewer.sh
+fi
+
 if [ $DRIVER = "yes" ]; then
 
 echo "-------- WARNING --------"

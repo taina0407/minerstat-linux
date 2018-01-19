@@ -5,8 +5,12 @@ sudo dpkg -i teamviewer_amd64.deb
 sudo apt-get --assume-yes install -f
 sudo teamviewer --daemon enable
 echo "*** Teamviewer Installed ***"
-teamviewer --passwd minerstat
+sudo teamviewer --passwd minerstat
+sudo teamviewer license accept
+killall teamviewer
 echo ""
-echo "--- Teamviewer ID ----"
-teamviewer --info print version, status, id
-echo "--- Teamviewer Password: minerstat ---"
+echo "--- Waiting for your ID ----"
+sudo teamviewer --daemon restart
+sudo teamviewer --info print version, status, id | grep "TeamViewer ID:"
+echo "   Teamviewer Password: minerstat"
+sudo rm teamviewer_amd64.deb

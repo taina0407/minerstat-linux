@@ -4,4 +4,4 @@ git config --global user.name "test"
 git pull --rebase
 git add * -f
 git commit -a -m "AutoUpdate"
-git pull --rebase
+git pull origin master

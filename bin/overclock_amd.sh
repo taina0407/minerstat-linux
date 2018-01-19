@@ -24,12 +24,10 @@ CORECLOCK=$3
 FANSPEED=$4
 VDDC=$5
 
-./amdcovc
 ./amdcovc coreclk:$GPUID=$CORECLOCK
 ./amdcovc memclk:$GPUID=$MEMCLOCK
 ./amdcovc fanspeed:$GPUID=$FANSPEED
 ./amdcovc vcore:$GPUID=$VDDC
-./amdcovc
 
 echo ""
 echo "*** https://minerstat.com ***"

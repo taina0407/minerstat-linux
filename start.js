@@ -17,7 +17,10 @@ var settings = require("./config.js");
 
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");
-tools.killall(); process.exit(); });
+tools.killall(); var childz;
+var execz = require('child_process').exec;
+childz = execz("minestat-stop", function (error, stdout, stderr) { });
+process.exit(); });
 
 process.on('uncaughtException', function (err) { console.log(err);    var log = err + ""; if(log.indexOf("ECONNREFUSED") > -1) { 
 clearInterval(global.timeout); tools.restart();  }    })
@@ -26,7 +29,7 @@ process.on('unhandledRejection', (reason, p) => { });
 
 function header() {
 console.log(colors.cyan('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*'));
-console.log(colors.cyan('------------------------ v0.6 Linux Beta ---------------------------'));
+console.log(colors.cyan('------------------------ v0.7 Linux Beta ---------------------------'));
 console.log(colors.cyan("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
 console.log('');
 let input_text = "minerstAt";
@@ -127,6 +130,7 @@ dlconf();
 //// GET CONFIG TO YOUR DEFAULT MINER
 function dlconf() {
 
+if(global.client === "bminer") { global.db = "bminer"; }
 if(global.client === "claymore-eth") { global.db = "eth"; }
 if(global.client === "ccminer-tpruvot") { global.db = "cc"; }
 if(global.client === "ccminer-djm34") { global.db = "ccdj"; }
@@ -137,17 +141,21 @@ if(global.client === "claymore-zec") { global.db = "zec"; }
 if(global.client === "ewbf-zec") { global.db = "ezec"; } 
 if(global.client === "sgminer-gm") { global.db = "sgg"; } 
 if(global.client === "ethminer") { global.db = "genoil"; }
+if(global.client === "zm-zec") { global.db = "zmzec"; }
 
+
+if(global.client.indexOf("bminer") > -1) { global.file = "clients/"+ global.client + "/start.bash"; }
 if(global.client.indexOf("ewbf") > -1) { global.file = "clients/"+ global.client + "/start.bash"; }
 if(global.client.indexOf("ethminer") > -1) { global.file = "clients/"+ global.client + "/start.bash"; }
 if(global.client.indexOf("ccminer") > -1) { global.file = "clients/"+ global.client + "/start.bash"; }
 if(global.client.indexOf("claymore") > -1) { global.file = "clients/"+ global.client + "/config.txt"; }
 if(global.client.indexOf("sgminer") > -1) { global.file = "sgminer.conf"; }
+if(global.client.indexOf("zm-zec") > -1) { global.file = "clients/"+ global.client + "/start.bash"; }
 
 needle.get('https://minerstat.com/getconfig.php?action='+ global.configtype +'&token='+ global.accesskey +'&worker=' + global.worker + '&db=' + global.db + '&best=' + global.algo_bestalgo + '&bestdual=' + global.algo_bestdual + '&dualnow=' + global.algo_checkdual + '&dualon=' + global.algo_dual + '&ccalgo=' + global.algo_cc, function(error, response) {
 global.chunk = response.body;
 
-if(global.client != "ewbf-zec" && global.client != "ethminer" && global.client.indexOf("ccminer") === -1) {
+if(global.client != "ewbf-zec" && global.client != "ethminer" && global.client != "zm-zec" && global.client != "bminer" && global.client.indexOf("ccminer") === -1) {
 
 var writeStream = fs.createWriteStream(global.path + "/" + global.file);
 console.log(global.chunk);

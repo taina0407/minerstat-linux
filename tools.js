@@ -84,6 +84,20 @@ require("child_process").spawn('clients/'+global.client+'/miner', args, {
 
 }
 
+
+if (global.client == "bminer") {
+
+  var parse = require('parse-spawn-args').parse
+  var args = parse(global.chunk);
+          
+  require("child_process").spawn('clients/'+global.client+'/bminer', args, {
+    cwd: process.cwd(),
+    detached: false,
+    stdio: "inherit"
+  });
+  
+}
+
 if (global.client == "ethminer") {
 
 var parse = require('parse-spawn-args').parse
@@ -110,6 +124,20 @@ require("child_process").spawn('clients/'+global.client+'/sgminer', args,  {
 });
  
 }
+
+if (global.client == "zm-zec") {
+
+  var parse = require('parse-spawn-args').parse
+  var args = parse(global.chunk);
+          
+  require("child_process").spawn('clients/'+global.client+'/zm', args, {
+    cwd: process.cwd(),
+    detached: false,
+    stdio: "inherit"
+  });
+  
+}
+
 },
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -261,6 +289,7 @@ killall: function () {
 const fkill = require('fkill');
 
 try {
+fkill('bminer').then(() => { });
 fkill('ccminer').then(() => { });
 fkill('zecminer64').then(() => { });
 fkill('ethminer').then(() => { });
@@ -268,6 +297,7 @@ fkill('ethdcrminer64').then(() => { });
 fkill('miner').then(() => { });
 fkill('sgminer').then(() => { });
 fkill('nsgpucnminer').then(() => { });
+fkill('zm').then(() => { });
 } catch(e) {
     
 } 
@@ -300,6 +330,19 @@ global.sync = new Boolean(true);
 // START WITH --token ACCESKEY --worker WORKERNAME
     
 }
+
+if(global.client.indexOf("bminer") > -1) {
+
+  var http = require('http');
+  var options = { host: '127.0.0.1', port: 1880, path: '/api/status' };
+  
+  var req = http.get(options, function(response) {
+  res_data = '';
+  response.on('data', function(chunk) { global.res_data += chunk;  global.status = new Boolean(true);  });
+  response.on('end', function() { global.sync = new Boolean(true);  }); });
+  req.on('error', function(err) {  console.log(colors.red(getDateTime() + " MINERSTAT.COM: Package Error. " + err.message)); global.sync = new Boolean(false); });
+  
+  }
 
 
 if(global.client.indexOf("claymore") > -1) {
@@ -361,6 +404,31 @@ cliente.on('end', () => {
 
 
 }
+
+if(global.client.indexOf("zm-zec") > -1) {
+
+  const netes = require('net');
+const clientes = netes.createConnection({ port: 2222 }, () => {
+  clientes.write("{\"id\":1, \"method\":\"getstat\"}\n");
+});
+clientes.on('data', (data) => {
+  console.log(data.toString());
+  global.res_data = data.toString();
+  
+  if (data.toString() === "") {
+      global.sync = new Boolean(false);     
+  } else {    
+    global.sync = new Boolean(true);
+  }
+  
+  clientes.end();
+});
+clientes.on('end', () => {
+});
+
+
+}
+
 
 if(global.client.indexOf("sgminer") > -1) {
 

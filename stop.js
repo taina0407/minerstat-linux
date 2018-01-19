@@ -7,7 +7,8 @@ const fkill = require('fkill');
 var exec = require('child_process').exec;
 
 try {
-fkill('ccminer').then(() => { });
+fkill('bminer').then(() => { });
+fkill('zm').then(() => { });
 fkill('zecminer64').then(() => { });
 fkill('ethminer').then(() => { });
 fkill('ethdcrminer64').then(() => { });

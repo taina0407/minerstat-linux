@@ -1,4 +1,4 @@
-# Minerstat.com [Linux] -  v0.6 
+# Minerstat.com [Linux] -  v0.7 
 
 ![Version](https://img.shields.io/github/release/coinscrow/minerstat-linux.svg)
 ![Latest](https://img.shields.io/github/last-commit/coinscrow/minerstat-linux.svg)
@@ -50,6 +50,8 @@ You can see mining process by type `minerstat-console` to the terminal.
 ## Currently Supported Clients
 Profit Switch by Minerstat
 
+bminer (Nvidia Equihash miner)
+
 CCminer-Tpruvot (Nvidia Multi Miner)
 
 CCminer-Alexis (Nvidia - better Skein algo)
@@ -70,14 +72,16 @@ Ewbf-Equihash (Nvidia ZEC Miner)
 
 SGMiner (NVIDIA/AMD Multi Algo)
 
+dstm's Zec [ZM-ZEC] (Nvidia Equihash miner)
+
 ## Functions
 Switch miner from the website
 
 Modify miner settings from the website (pools etc..)
 
-Restart mining
+Restart mining / Reboot Rig
 
-Hardware Monitor (nvidia, amd) (Under testing)
+Hardware Monitor
 
 Profit Switch (Between Coins and Algos)
 

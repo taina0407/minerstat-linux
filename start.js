@@ -23,7 +23,7 @@ childz = execz("minestat-stop", function (error, stdout, stderr) { });
 process.exit(); });
 
 process.on('uncaughtException', function (err) { console.log(err);    var log = err + ""; if(log.indexOf("ECONNREFUSED") > -1) { 
-clearInterval(global.timeout); tools.restart();  }    })
+clearInterval(global.timeout); clearInterval(global.hwmonitor);  tools.restart();  }    })
 
 process.on('unhandledRejection', (reason, p) => { });
 

@@ -218,26 +218,26 @@ request.get({
     console.log(colors.magenta("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
 
     if (global.algo_checkdual != algo_checkdual) {
-      clearInterval(global.timeout);
+      clearInterval(global.timeout); clearInterval(global.hwmonitor);      
       main.main();
     }
 
     if (global.algo_checkdual === "YES") {
 
       if (global.algo_bestalgo != algo_bestalgo) {
-        clearInterval(global.timeout);
+         clearInterval(global.timeout); clearInterval(global.hwmonitor); 
         main.main();;
       }
 
       if (global.algo_bestdual != algo_bestdual) {
-        clearInterval(global.timeout);
+         clearInterval(global.timeout); clearInterval(global.hwmonitor); 
         main.main();
       }
 
     } else {
 
       if (global.algo_bestalgo != algo_bestalgo) {
-        clearInterval(global.timeout);
+         clearInterval(global.timeout); clearInterval(global.hwmonitor); 
         main.main();
       }
 
@@ -256,7 +256,7 @@ request.get({
 if (command === "RESTARTNODE") {
 
 
-clearInterval(global.timeout);
+clearInterval(global.timeout); clearInterval(global.hwmonitor); 
 main.main();
         
 }

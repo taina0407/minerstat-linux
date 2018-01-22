@@ -60,6 +60,7 @@ tar -xvf amd-blockchain-linux.tar.xz
 cd amdgpu-pro-17.40-483984
 chmod 777 amdgpu-pro-install
 ./amdgpu-pro-install -y
+sudo usermod -a -G video $LOGNAME
 echo "AMD Driver Install script done.."
 cd ..
 rm -rf amdgpu-pro-17.40-483984
@@ -67,7 +68,9 @@ rm amd-blockchain-linux.tar.xz
 echo "AMD Driver package & folder has been removed"
 echo "----- Installing ROCm kernel for AMD driver -----"
 sudo apt install -y rocm-amdgpu-pro
-echo 'setenv LLVM_BIN /opt/amdgpu-pro/bin' | sudo tee /etc/profile.d/amdgpu-pro.csh
+echo 'export LLVM_BIN=/opt/amdgpu-pro/bin' | sudo tee /etc/profile.d/amdgpu-pro.sh
+sudo apt-get remove linux-image-4.13.0-26-generic && sudo apt autoremove -y
+sudo update-grub
 fi
   
 else

@@ -63,7 +63,15 @@ const https = require('https');
 var needle = require('needle');
 
 needle.get('https://minerstat.com/getresponse.php?action=getminer&token='+ global.accesskey +'&worker=' + global.worker, function(error, response) {
+if (error === null) {
 global.client = response.body;
+} else {
+clearInterval(global.timeout); 
+clearInterval(global.hwmonitor); 
+console.log(colors.red(getDateTime() + " Waiting for connection.."));
+sleep.sleep(5); 
+tools.restart();
+}
 
 if (response.body === "algo") { 
 

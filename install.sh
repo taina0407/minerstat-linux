@@ -41,7 +41,7 @@ sudo apt-get --assume-yes install git screen nodejs nodejs-legacy unzip npm ocl-
 sudo apt-get --assume-yes upgrade libstdc++6
 git clone https://github.com/coinscrow/minerstat-linux/
 cd minerstat-linux
-npm install colors sleep pump request express sphp progress ascii-text-generator fkill needle parse-spawn-args
+npm install colors sleep pump request express sphp progress ascii-text-generator fkill needle parse-spawn-args readline-sync
 
 
 if [ $DRIVER = "yes" ]; then

@@ -145,20 +145,20 @@ if (global.client == "zm-zec") {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 autoupdate: function () {
+    
+console.log(colors.magenta("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
+console.log(colors.magenta("Please wait.. AutoUpdate in progress"));
 
 var exec = require('child_process').exec;
 var main = require('./start.js');
 
-var query = exec("sh git.sh",
+var query = exec("sudo sh git.sh",
 function (error, stdout, stderr) {
 
 var res = stdout + "" + stderr;
 
-console.log(colors.magenta("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
-console.log(colors.magenta("AUTOUPDATE: DONE"));
-if(global.client.indexOf("Already up-to-date") === 0) {
-console.log(colors.red("NODE RESTART NEEDED! Press Ctrl + C to exit"));
-}
+console.log(colors.magenta(res));
+
 console.log(colors.magenta("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
 
 main.boot();

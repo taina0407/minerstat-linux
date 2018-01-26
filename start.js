@@ -69,7 +69,7 @@ global.client = response.body;
 clearInterval(global.timeout); 
 clearInterval(global.hwmonitor); 
 console.log(colors.red(getDateTime() + " Waiting for connection.."));
-sleep.sleep(5); 
+sleep.sleep(10); 
 tools.restart();
 }
 

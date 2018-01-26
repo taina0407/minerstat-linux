@@ -15,6 +15,28 @@ var tools = require('./tools.js');
 var monitor = require('./monitor.js');
 var settings = require("./config.js");
 
+// THIS FUNCTION ONLY FOR MINERSTAT OS
+if (global.accesskey === "CHANGEIT") {
+
+var readlineSync = require('readline-sync');
+
+var qtoken = readlineSync.question("Please enter your minerstat.com AccessKey: ");
+var qworker = readlineSync.question('Please enter your minerstat.com Worker: ');
+
+var fstream = require('fs');
+var stream = fstream.createWriteStream("config.js");
+stream.once('open', function(fd) {
+  stream.write("global.accesskey = '"+qtoken+"';\n");
+  stream.write("global.worker = '"+qworker+"';\n");
+  stream.write("global.path = __dirname;");
+  stream.end();
+});
+
+global.accesskey = qtoken;
+global.worker = qworker;
+  
+}
+
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");
 tools.killall(); var childz;

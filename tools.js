@@ -146,21 +146,7 @@ if (global.client == "zm-zec") {
 
 autoupdate: function () {
     
-console.log(colors.magenta("/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
-console.log(colors.magenta("Please wait.. AutoUpdate in progress"));
-
-var exec = require('child_process').exec;
 var main = require('./start.js');
-
-var query = exec("sudo sh git.sh",
-function (error, stdout, stderr) {
-
-var res = stdout + "" + stderr;
-
-console.log(colors.magenta(res));
-
-console.log(colors.magenta("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));
-
 main.boot();
 
 });

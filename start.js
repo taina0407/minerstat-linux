@@ -40,11 +40,11 @@ global.worker = qworker;
 // MINERSTAT OS SWITCH BACK TO CONSOLE AFTER FAKE DUMMY PLUG STARTED
 var dummy = require('child_process').exec; var checkos;
 checkos = dummy("ls /home | grep minerstat", function (error, stdout, stderr) { 
-var response = stdout + stderr;
+var response = stdout;
 
 if(response.indexOf("minerstat") > -1) {
-checkos = dummy("sudo chvt 1", function (error, stdout, stderr) { }); 
-  
+checkos = dummy("sleep 10; sudo chvt 1", function (error, stdout, stderr) { }); 
+console.log("" + stdout);  
 }
   
 });

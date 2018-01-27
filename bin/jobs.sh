@@ -1,2 +1,3 @@
 #!/bin/bash
-echo "All jobs finished"
+find '/home/minerstat/minerstat-linux' -name "*log.txt" -type f -delete
+echo "Log files deleted"

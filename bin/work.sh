@@ -5,6 +5,7 @@ screen -A -m -d -S dummy sleep 86400
 echo ""
 echo "-------- INIZALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."
+export XAUTHORITY=/home/minerstat/.Xauthority
 sleep 1
 sudo service lightdm start
 sleep 10

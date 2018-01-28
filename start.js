@@ -34,6 +34,7 @@ stream.once('open', function(fd) {
 
 global.accesskey = qtoken;
 global.worker = qworker;
+global.reboot = "yes";
 
 console.log(colors.cyan('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*'));
 console.log(colors.cyan('Installation Done!'));
@@ -43,13 +44,7 @@ console.log(colors.cyan('After you can monitor your rig from minerstat.com'));
 console.log(colors.cyan("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));  
   
 var rreboot = readlineSync.question('Press Enter to REBOOT the System');
-  
-var childp = require('child_process').exec;
-var queries = childp("sudo reboot -f",
-function (error, stdout, stderr) {
-console.log("System going to reboot now..");
-});  
-  
+
 }
 
 process.on('SIGINT', function() {
@@ -171,7 +166,16 @@ dlconf();
 
 });
 
+if (global.reboot === "yes") {  
+  
+var childp = require('child_process').exec;
+var queries = childp("sudo reboot -f",
+function (error, stdout, stderr) {
+console.log("System going to reboot now..");
+});
 
+}  
+  
 //// GET CONFIG TO YOUR DEFAULT MINER
 function dlconf() {
 

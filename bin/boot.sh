@@ -48,10 +48,5 @@ echo ""
 
 echo "-------- INITALIZING MINERSTAT CLIENT -----------"
 cd /home/minerstat/minerstat-linux
-screen -A -m -d -S minerstat-console sh /home/minerstat/minerstat-linux/start.sh;
-echo ""
-echo "Minerstat has been started in the background.."
-echo "Please wait for console output.."
-sleep 7
-screen -x minerstat-console
+node start
 fi

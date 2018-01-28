@@ -34,20 +34,23 @@ stream.once('open', function(fd) {
 
 global.accesskey = qtoken;
 global.worker = qworker;
+
+console.log(colors.cyan('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*'));
+console.log(colors.cyan('Installation Done!'));
+console.log(colors.cyan('Please remove your HDMI cables and press ENTER to REBOOT.'));
+console.log(colors.cyan(''));
+console.log(colors.cyan('After you can monitor your rig from minerstat.com'));
+console.log(colors.cyan("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));  
+  
+var rreboot = readlineSync.question('Press Enter to REBOOT the System');
+  
+var childp = require('child_process').exec;
+var queries = childp("sudo reboot -f",
+function (error, stdout, stderr) {
+console.log("System going to reboot now..");
+});  
   
 }
-
-// MINERSTAT OS SWITCH BACK TO CONSOLE AFTER FAKE DUMMY PLUG STARTED
-var dummy = require('child_process').exec; var checkos;
-checkos = dummy("ls /home | grep minerstat", function (error, stdout, stderr) { 
-var response = stdout;
-
-if(response.indexOf("minerstat") > -1) {
-checkos = dummy("sleep 10; sudo chvt 1", function (error, stdout, stderr) { }); 
-console.log("" + stdout);  
-}
-  
-});
 
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");

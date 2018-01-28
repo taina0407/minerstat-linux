@@ -12,6 +12,11 @@ export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
 sudo service lightdm start
 sleep 10
 sudo chvt 1
+echo ""
+
+echo "-------- OVERCLOCKING ---------------------------"
+cd /home/minerstat/minerstat-linux/bin
+sudo sh overclock.sh
 
 echo " "
 echo "-------- AUTO CONFIGURE NETWORK ADAPTERS --------"
@@ -32,11 +37,6 @@ echo "-------- AUTO UPDATE MINERSTAT ------------------"
 echo ""
 cd /home/minerstat/minerstat-linux
 sudo sh git.sh
-echo ""
-
-echo "-------- OVERCLOCKING ---------------------------"
-cd /home/minerstat/minerstat-linux/bin
-sudo sh overclock.sh
 echo ""
 
 echo "-------- RUNNING JOBS ---------------------------"

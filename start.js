@@ -16,7 +16,7 @@ var monitor = require('./monitor.js');
 var settings = require("./config.js");
 
 // THIS FUNCTION ONLY FOR MINERSTAT OS
-if (global.accesskey === "CHANGEIT") {
+if (global.accesskey === "CHANGEIT" || global.accesskey === "") {
 
 var readlineSync = require('readline-sync');
 

@@ -10,9 +10,9 @@ echo "Please wait.."
 sleep 1
 sudo update-grub
 sudo nvidia-xconfig -a --allow-empty-initial-configuration --cool-bits=28 --use-display-device="DFP-0" --connected-monitor="DFP-0" --enable-all-gpus
-export XAUTHORITY="$XDG_CACHE_HOME/Xauthority"
-#sudo service lightdm start
-#sleep 10
+sudo service gdm stop
+#screen -A -m -d -S display sudo X
+sleep 10
 sudo chvt 1
 echo ""
 
@@ -46,7 +46,7 @@ cd /home/minerstat/minerstat-linux/bin
 sudo sh jobs.sh
 echo ""
 
-echo "-------- INITALIZING MINERSTAT CLIENT -----------"
-cd /home/minerstat/minerstat-linux
-node start
+echo "-------- REBOOT IN 3 SEC -----------"
+sleep 2
+sudo reboot -f
 fi

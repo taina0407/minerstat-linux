@@ -21,10 +21,11 @@ FANSPEED=$2
 MEMORYOFFSET=$3
 COREOFFSET=$4
 
-nvidia-smi -pl $POWERLIMITINWATT
-nvidia-settings -c :0 -a 'GPUFanControlState=1' -a 'GPUTargetFanSpeed='"$FANSPEED"''
-nvidia-settings -c :0 -a 'GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"''
-nvidia-settings -c :0 -a 'GPUGraphicsClockOffset[3]='"$COREOFFSET"''
+sudo nvidia-smi -pm 1
+sudo nvidia-smi -pl $POWERLIMITINWATT | grep 'Power'
+sudo nvidia-settings -c :0 -a 'GPUFanControlState=1' -a 'GPUTargetFanSpeed='"$FANSPEED"'' | grep 'Attribute'
+sudo nvidia-settings -c :0 -a 'GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"'' | grep 'Attribute'
+sudo nvidia-settings -c :0 -a 'GPUGraphicsClockOffset[3]='"$COREOFFSET"'' | grep 'Attribute'
 
 echo ""
 echo "*** https://minerstat.com ***"

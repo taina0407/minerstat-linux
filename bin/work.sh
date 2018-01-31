@@ -6,7 +6,7 @@ echo ""
 echo "-------- INIZALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."
 sleep 1
-sudo service lightdm stop
+sudo service dgm stop
 sleep 3
 screen -A -m -d -S display sudo X
 echo ""

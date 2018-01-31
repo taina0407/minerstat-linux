@@ -2,6 +2,7 @@
 // MINERSTAT.COM - LINUX CLIENT
 
 "use strict";
+global.path = __dirname;
 
 var colors = require('colors'); var sleep = require('sleep');
 var pump = require('pump'); var fs = require('fs');
@@ -13,39 +14,20 @@ global.isalgo = "NO";
 
 var tools = require('./tools.js');
 var monitor = require('./monitor.js');
-var settings = require("./config.js");
+var settings;
 
-// THIS FUNCTION ONLY FOR MINERSTAT OS
-if (global.accesskey === "CHANGEIT" || global.accesskey === "") {
+// MINERSTAT OS | | | CONFIG FILE FROM NTFS PARTITION
+var dummy = require('child_process').exec; var checkos;
+checkos = dummy("ls /home | grep minerstat", function (error, stdout, stderr) { 
+var response = stdout;
 
-var readlineSync = require('readline-sync');
-
-var qtoken = readlineSync.question("Please enter your minerstat.com AccessKey: ");
-var qworker = readlineSync.question('Please enter your minerstat.com Worker: ');
-
-var fstream = require('fs');
-var stream = fstream.createWriteStream("config.js");
-stream.once('open', function(fd) {
-  stream.write("global.accesskey = '"+qtoken+"';\n");
-  stream.write("global.worker = '"+qworker+"';\n");
-  stream.write("global.path = __dirname;");
-  stream.end();
-});
-
-global.accesskey = qtoken;
-global.worker = qworker;
-global.reboot = "yes";
-
-console.log(colors.cyan('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*'));
-console.log(colors.cyan('Installation Done!'));
-console.log(colors.cyan('Please remove your HDMI cables and press ENTER to REBOOT.'));
-console.log(colors.cyan(''));
-console.log(colors.cyan('After you can monitor your rig from minerstat.com'));
-console.log(colors.cyan("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));  
-  
-var rreboot = readlineSync.question('Press Enter to REBOOT the System');
-
+if(response.indexOf("minerstat") > -1) {
+var settings = require("/media/storage/config.js");
+} else {
+var settings = require("./config.js");  
 }
+  
+});
 
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");

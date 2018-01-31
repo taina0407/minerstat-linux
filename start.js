@@ -14,20 +14,7 @@ global.isalgo = "NO";
 
 var tools = require('./tools.js');
 var monitor = require('./monitor.js');
-var settings;
-
-// MINERSTAT OS | | | CONFIG FILE FROM NTFS PARTITION
-var dummy = require('child_process').exec; var checkos;
-checkos = dummy("ls /home | grep minerstat", function (error, stdout, stderr) { 
-var response = stdout;
-
-if(response.indexOf("minerstat") > -1) {
-var settings = require("/media/storage/config.js");
-} else {
 var settings = require("./config.js");  
-}
-  
-});
 
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");

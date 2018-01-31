@@ -46,5 +46,9 @@ cd /home/minerstat/minerstat-linux
 screen -A -m -d -S minerstat-console sh /home/minerstat/minerstat-linux/start.sh;
 echo ""
 echo "Minerstat has been started in the background.."
-echo "Type: 'miner' to display output.."
+echo "Waiting for console output.."
+sleep 5
+sudo chvt 1
+sleep 10
+screen -x minerstat-console
 fi

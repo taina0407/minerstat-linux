@@ -22,20 +22,20 @@ child = exec("nvidia-smi -L",
         } 
   
         if (error !== null) {
-            console.log('exec error: ' + error);
+            console.log('Hardware Monitor: Nvidia GPU not found');
         }
 });
 
 child = exec(global.path + "/bin/amdcovc",
      function (error, stdout, stderr) {
-      var response = stderr;
+      var response = stdout;
 
         if(response.indexOf("Adapter") !== -1) {
           global.gputype = "amd";
         } 
   
         if (error !== null) {
-            console.log('exec error: ' + error);
+             console.log('Hardware Monitor: AMD GPU not found');
         }
 });
 

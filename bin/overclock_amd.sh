@@ -25,10 +25,11 @@ CORECLOCK=$3
 FANSPEED=$4
 VDDC=$5
 
-./amdcovc coreclk:$GPUID=$CORECLOCK
-./amdcovc memclk:$GPUID=$MEMCLOCK
-./amdcovc fanspeed:$GPUID=$FANSPEED
-./amdcovc vcore:$GPUID=$VDDC
+sudo ./amdcovc coreclk:$GPUID=$CORECLOCK | grep "Setting core clock"
+sudo ./amdcovc memclk:$GPUID=$MEMCLOCK | grep "Setting memory clock"
+sudo ./ohgodatool -i $GPUID --set-fan-speed $FANSPEED
+sudo ./amdcovc fanspeed:$GPUID=$FANSPEED | grep "Setting"
+sudo ./amdcovc vcore:$GPUID=$VDDC | grep "Setting"
 
 echo ""
 echo "*** https://minerstat.com ***"

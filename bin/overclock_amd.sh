@@ -1,4 +1,5 @@
 #!/bin/bash
+exec 2>/dev/null
 echo "*** AMD Overclocking Tool @coinscrow ***"
 echo "*** Special thanks to: matszpk for amdcovc ***"
 
@@ -32,5 +33,8 @@ VDDC=$5
 echo ""
 echo "*** https://minerstat.com ***"
 echo ""
+
+sleep 2
+sudo chvt 1
 
 fi

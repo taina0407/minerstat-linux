@@ -1,4 +1,5 @@
 #!/bin/bash
+exec 2>/dev/null
 echo "*** Nvidia Overclocking Tool @coinscrow ***"
 
 if [ ! $1 ]; then
@@ -30,5 +31,8 @@ sudo nvidia-settings -c :0 -a 'GPUGraphicsClockOffset[3]='"$COREOFFSET"'' | grep
 echo ""
 echo "*** https://minerstat.com ***"
 echo ""
+
+sleep 2
+sudo chvt 1
 
 fi

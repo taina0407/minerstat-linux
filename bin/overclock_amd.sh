@@ -27,7 +27,7 @@ VDDC=$5
 
 sudo ./amdcovc coreclk:$GPUID=$CORECLOCK | grep "Setting core clock"
 sudo ./amdcovc memclk:$GPUID=$MEMCLOCK | grep "Setting memory clock"
-sudo ./ohgodatool -i $GPUID --set-fan-speed $FANSPEED
+sudo ./ohgodatool -i $GPUID --set-fanspeed $FANSPEED
 sudo ./amdcovc fanspeed:$GPUID=$FANSPEED | grep "Setting"
 sudo ./amdcovc vcore:$GPUID=$VDDC | grep "Setting"
 

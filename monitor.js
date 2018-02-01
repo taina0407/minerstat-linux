@@ -26,7 +26,7 @@ child = exec("nvidia-smi -L",
         }
 });
 
-child = exec(global.path + "/bin/amdcovc",
+child = exec(global.path + "/bin/amdmeminfo",
      function (error, stdout, stderr) {
       var response = stderr;
 

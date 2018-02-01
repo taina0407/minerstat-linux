@@ -11,12 +11,8 @@ sleep 3
 screen -A -m -d -S display sudo X
 echo ""
 
-echo "-------- OVERCLOCKING ---------------------------"
-cd /home/minerstat/minerstat-linux/bin
-sudo sh overclock.sh
-
 echo " "
-echo "-------- AUTO CONFIGURE NETWORK ADAPTERS --------"
+echo "-------- CONFIGURE NETWORK ADAPTERS --------------"
 cd /home/minerstat/minerstat-linux/bin
 sudo sh dhcp.sh
 
@@ -35,6 +31,10 @@ echo ""
 cd /home/minerstat/minerstat-linux
 sudo sh git.sh
 echo ""
+
+echo "-------- OVERCLOCKING ---------------------------"
+cd /home/minerstat/minerstat-linux/bin
+sudo sh overclock.sh
 
 echo "-------- RUNNING JOBS ---------------------------"
 cd /home/minerstat/minerstat-linux/bin

@@ -26,11 +26,11 @@ child = exec("nvidia-smi -L",
         }
 });
 
-child = exec(global.path + "/bin/amdmeminfo",
+child = exec(global.path + "/bin/amdcovc",
      function (error, stdout, stderr) {
       var response = stderr;
 
-        if(response.indexOf("no version information") === -1) {
+        if(response.indexOf("Adapter") !== -1) {
           global.gputype = "amd";
         } 
   

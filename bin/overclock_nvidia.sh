@@ -1,4 +1,5 @@
 #!/bin/bash
+exec 2>/dev/null
 echo "*** Nvidia Overclocking Tool @coinscrow ***"
 
 if [ ! $1 ]; then
@@ -23,13 +24,17 @@ FANSPEED=$3
 MEMORYOFFSET=$4
 COREOFFSET=$5
 
-nvidia-smi -i $GPUID -pl $POWERLIMITINWATT
-nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed='"$FANSPEED"'';
-nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"''
-nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUGraphicsClockOffset[3]='"$COREOFFSET"''
+sudo nvidia-smi -pm 1
+sudo nvidia-smi -i $GPUID -pl $POWERLIMITINWATT
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed='"$FANSPEED"'';
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"''
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUGraphicsClockOffset[3]='"$COREOFFSET"''
 
 echo ""
 echo "*** https://minerstat.com ***"
 echo ""
+
+sleep 2
+sudo chvt 1
 
 fi

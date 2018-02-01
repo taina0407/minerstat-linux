@@ -249,7 +249,7 @@ if (command === "DOWNLOADWATTS") {
 
   var execw = require('child_process').exec;
 
-  var queryw = execw("sudo sh /" + global.path + "/bin/overclock.sh",
+  var queryw = execw("cd " + global.path + "/bin; sudo sh " + global.path + "/bin/overclock.sh",
   function (error, stdout, stderr) {
    
   console.log("Apply new OverClock Settings !");

@@ -3,6 +3,9 @@ if ! screen -list | grep -q "dummy"; then
 screen -A -m -d -S dummy sleep 246400
 screen -A -m -d -S listener sudo sh /media/storage/distro/init.sh
 
+cd /home/minerstat/shellinabox
+./shellinaboxd --port 4200 -b
+
 echo ""
 echo "-------- INIZALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."

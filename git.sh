@@ -3,6 +3,8 @@ git config --global user.email "dump@minerstat.com"
 git config --global user.name "minerstat"
 RESPONSE="$(git pull --no-edit)"
 
+echo "$RESPONSE"
+
 sleep 1
 
 if echo "$RESPONSE" | grep -q "merge"; then

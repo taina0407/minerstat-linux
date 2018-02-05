@@ -23,7 +23,10 @@ MEMORYOFFSET=$3
 COREOFFSET=$4
 
 sudo nvidia-smi -pm 1
+if [ "$POWERLIMITINWATT" -ne 0 ]
+then
 sudo nvidia-smi -pl $POWERLIMITINWATT | grep 'Power'
+fi
 sudo nvidia-settings -c :0 -a 'GPUFanControlState=1' -a 'GPUTargetFanSpeed='"$FANSPEED"'' | grep 'Attribute'
 sudo nvidia-settings -c :0 -a 'GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"'' | grep 'Attribute'
 sudo nvidia-settings -c :0 -a 'GPUGraphicsClockOffset[3]='"$COREOFFSET"'' | grep 'Attribute'

@@ -2,6 +2,9 @@
 echo "*-*-* Overclocking in progress *-*-*"
 #cd /home/minerstat/minerstat-linux/bin/
 
+DEVICE=$(sudo lshw -short | grep AMD | wc -l)
+DIVIDE=$((DEVICE / 2))
+
 NVIDIA="$(nvidia-smi -L)"
 
 if [ ! -z "$NVIDIA" ]; then
@@ -44,7 +47,7 @@ fi
 
 if [ ! -z "$DOAMD" ]; then
 
-wget -qO doclock.sh "https://minerstat.com/getclock.php?type=amd&token=$TOKEN&worker=$WORKER"
+wget -qO doclock.sh "https://minerstat.com/getclock.php?type=amd&token=$TOKEN&worker=$WORKER&nums=$DIVIDE"
 sleep 3
 sudo sh doclock.sh
 

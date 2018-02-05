@@ -53,6 +53,9 @@ echo "Minerstat has been started in the background.."
 echo "Waiting for console output.."
 sleep 5
 sudo chvt 1
-sleep 10
+sleep 6
+exec bash
+source ~/.bashrc
+sleep 4
 screen -x minerstat-console
 fi

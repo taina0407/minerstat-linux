@@ -5,11 +5,14 @@ RESPONSE="$(git pull --no-edit)"
 
 sleep 1
 
-if echo "$RESPONSE" | grep -iq "^commit your changes" ;then
+if ! printf -- '$s' "$RESPONSE" | egrep -q -- "merge"
+then
 
 sleep 2
 
 sudo git commit -a -m "Init"
 sudo git merge
+sudo git add *
+sudo git commit -a -m "Fix done"
 
 fi

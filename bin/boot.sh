@@ -28,6 +28,8 @@ if [ "$NETBOT" -ne "NO" ]
 then
 cd /home/minerstat/minerstat-linux/bin
 sudo sh dhcp.sh
+else
+echo "If you don't have connection set DHCP=YES parameter on the USB."
 fi
 
 sleep 2

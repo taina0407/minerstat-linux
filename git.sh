@@ -5,8 +5,7 @@ RESPONSE="$(git pull --no-edit)"
 
 sleep 1
 
-if ! printf -- '$s' "$RESPONSE" | egrep -q -- "merge"
-then
+if echo "$RESPONSE" | grep -q "merge"; then
 
 sleep 2
 

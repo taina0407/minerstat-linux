@@ -4,6 +4,8 @@ screen -A -m -d -S dummy sleep 86400
 
 echo "boot" > random.txt
 
+NETBOT="$(cat /media/storage/network.txt | grep 'DHCP=' | tail -n 1 | sed 's/DHCP=//g')"
+
 echo ""
 echo "-------- INSTALLING FAKE DUMMY PLUG ------------"
 echo "Please wait.."
@@ -22,8 +24,11 @@ echo ""
 
 echo " "
 echo "-------- AUTO CONFIGURE NETWORK ADAPTERS --------"
+if [ "$NETBOT" -ne "NO" ]
+then
 cd /home/minerstat/minerstat-linux/bin
 sudo sh dhcp.sh
+fi
 
 sleep 2
 

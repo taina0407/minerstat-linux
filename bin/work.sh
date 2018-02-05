@@ -6,6 +6,8 @@ screen -A -m -d -S listener sudo sh /media/storage/distro/init.sh
 cd /home/minerstat/shellinabox
 ./shellinaboxd --port 4200 -b
 
+NETBOT="$(cat /media/storage/network.txt | grep 'EVERYBOOT=' | tail -n 1 | sed 's/EVERYBOOT=//g')"
+
 echo ""
 echo "-------- INIZALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."
@@ -17,8 +19,13 @@ echo ""
 
 echo " "
 echo "-------- CONFIGURE NETWORK ADAPTERS --------------"
+if [ "$NETBOT" -ne "NO" ]
+then
 cd /home/minerstat/minerstat-linux/bin
 sudo sh dhcp.sh
+else
+echo "If you don't have connection set EVERYBOOT=YES parameter on the USB."
+fi
 
 sleep 2
 

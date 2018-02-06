@@ -24,7 +24,7 @@ echo ""
 
 echo " "
 echo "-------- AUTO CONFIGURE NETWORK ADAPTERS --------"
-if [ "$NETBOT" -ne "NO" ]
+if [ "$NETBOT" != "NO" ]
 then
 cd /home/minerstat/minerstat-linux/bin
 sudo sh dhcp.sh

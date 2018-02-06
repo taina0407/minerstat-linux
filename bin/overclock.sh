@@ -3,7 +3,11 @@ echo "*-*-* Overclocking in progress *-*-*"
 #cd /home/minerstat/minerstat-linux/bin/
 
 DEVICE=$(sudo lshw -short | grep AMD | wc -l)
+if [ "$DEVICE" -gt "0" ]; then
 DIVIDE=$((DEVICE / 2))
+else
+DIVIDE="0"
+fi
 
 NVIDIA="$(nvidia-smi -L)"
 
@@ -16,10 +20,7 @@ DONVIDIA="YES"
 fi
 fi
 
-
-AMD="$(./amdmeminfo | grep 'information available')"
-
-if echo "$AMD" | grep -iq "^no version information available" ;then
+if [ "$DIVIDE" -gt "0" ]; then
 
 DOAMD="YES"
 

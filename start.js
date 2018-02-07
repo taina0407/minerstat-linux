@@ -25,7 +25,7 @@ var qtoken = readlineSync.question("Please enter your minerstat.com AccessKey: "
 var qworker = readlineSync.question('Please enter your minerstat.com Worker: ');
 
 var fstream = require('fs');
-var stream = fstream.createWriteStream("config.js");
+var stream = fstream.createWriteStream("./media/storage/config.js");
 stream.once('open', function(fd) {
   stream.write("global.accesskey = '"+qtoken+"';\n");
   stream.write("global.worker = '"+qworker+"';\n");

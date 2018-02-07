@@ -16,6 +16,38 @@ var tools = require('./tools.js');
 var monitor = require('./monitor.js');
 var settings = require("./config.js");  
 
+// THIS FUNCTION ONLY FOR MINERSTAT OS
+if (global.accesskey === "CHANGEIT" || global.accesskey === "") {
+
+var readlineSync = require('readline-sync');
+
+var qtoken = readlineSync.question("Please enter your minerstat.com AccessKey: ");
+var qworker = readlineSync.question('Please enter your minerstat.com Worker: ');
+
+var fstream = require('fs');
+var stream = fstream.createWriteStream("config.js");
+stream.once('open', function(fd) {
+  stream.write("global.accesskey = '"+qtoken+"';\n");
+  stream.write("global.worker = '"+qworker+"';\n");
+  stream.write("global.path = __dirname;");
+  stream.end();
+});
+
+global.accesskey = qtoken;
+global.worker = qworker;
+global.reboot = "yes";
+
+console.log(colors.cyan('/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*'));
+console.log(colors.cyan('Installation Done!'));
+console.log(colors.cyan('Please remove your HDMI cables and press ENTER to REBOOT.'));
+console.log(colors.cyan(''));
+console.log(colors.cyan('After you can monitor your rig from minerstat.com'));
+console.log(colors.cyan("*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/"));  
+  
+var rreboot = readlineSync.question('Press Enter to REBOOT the System');
+
+}
+
 process.on('SIGINT', function() {
 console.log("Ctrl + C --> Closing running miner & minerstat");
 tools.killall(); var childz;
@@ -135,6 +167,16 @@ dlconf();
 
 });
 
+if (global.reboot === "yes") {  
+  
+var childp = require('child_process').exec;
+var queries = childp("sudo reboot -f",
+function (error, stdout, stderr) {
+console.log("System going to reboot now..");
+});
+
+}  
+  
 if (global.reboot === "yes") {  
   
 var childp = require('child_process').exec;

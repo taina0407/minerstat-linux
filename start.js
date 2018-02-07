@@ -21,11 +21,17 @@ if (global.accesskey === "CHANGEIT" || global.accesskey === "") {
 
 var readlineSync = require('readline-sync');
 
+  console.log("-*- If you see Segmentation fault error:");
+  console.log("Type:");
+  console.log("node start");
+  console.log("");
+  console.log("After fill in your details");
+
 var qtoken = readlineSync.question("Please enter your minerstat.com AccessKey: ");
 var qworker = readlineSync.question('Please enter your minerstat.com Worker: ');
 
 var fstream = require('fs');
-var stream = fstream.createWriteStream("./media/storage/config.js");
+var stream = fstream.createWriteStream("/media/storage/config.js");
 stream.once('open', function(fd) {
   stream.write("global.accesskey = '"+qtoken+"';\n");
   stream.write("global.worker = '"+qworker+"';\n");

@@ -27,11 +27,27 @@ COREOFFSET=$5
 sudo nvidia-smi -pm 1
 if [ "$POWERLIMITINWATT" -ne 0 ]
 then
+if [ "$POWERLIMITINWATT" != "skip" ]
+then
 sudo nvidia-smi -i $GPUID -pl $POWERLIMITINWATT
 fi
+fi
+
+if [ "$FANSPEED" != "skip" ]
+then
 sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUFanControlState=1' -a '[fan:0]/GPUTargetFanSpeed='"$FANSPEED"'';
+fi
+
+if [ "$MEMORYOFFSET" != "skip" ]
+then
 sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"''
+fi
+
+if [ "$COREOFFSET" != "skip" ]
+then
 sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUGraphicsClockOffset[3]='"$COREOFFSET"''
+fi
+
 
 echo ""
 echo "*** https://minerstat.com ***"

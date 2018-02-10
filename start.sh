@@ -1,3 +1,3 @@
 #!/bin/bash
 cd /home/minerstat/minerstat-linux
-node start
+sudo node start

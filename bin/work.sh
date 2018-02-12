@@ -52,6 +52,9 @@ cd /home/minerstat/minerstat-linux/bin
 sudo sh jobs.sh
 echo ""
 
+cd /media/storage/distro
+sudo sh expand.sh
+
 echo "-------- INITALIZING MINERSTAT CLIENT -----------"
 cd /home/minerstat/minerstat-linux
 screen -A -m -d -S minerstat-console sh /home/minerstat/minerstat-linux/start.sh;

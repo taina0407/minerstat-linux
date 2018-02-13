@@ -23,7 +23,7 @@ var readlineSync = require('readline-sync');
 
   console.log("-*- If you see Segmentation fault error:");
   console.log("Type:");
-  console.log("node start");
+  console.log("sudo node start");
   console.log("");
   console.log("After fill in your details");
 

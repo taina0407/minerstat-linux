@@ -9,7 +9,7 @@ cd /home/minerstat/shellinabox
 NETBOT="$(cat /media/storage/network.txt | grep 'EVERYBOOT=' | tail -n 1 | sed 's/EVERYBOOT=//g')"
 
 echo ""
-echo "-------- INITALIZING FAKE DUMMY PLUG -------------"
+echo "-------- INITIALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."
 sleep 1
 sudo service dgm stop

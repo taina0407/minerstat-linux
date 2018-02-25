@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/github/release/coinscrow/minerstat-linux.svg)
 ![Latest](https://img.shields.io/github/last-commit/coinscrow/minerstat-linux.svg)
 
-NOTICE IT HAS BEEN DESIGNED TO WORK WITH minerstat OS! 
+NOTICE: IT HAS BEEN DESIGNED TO WORK WITH minerstat OS! 
 
 # First Steps
 
@@ -35,9 +35,9 @@ mhelp     | List all available commands.
 
 # Informations
 
-You can see mining process by type `minerstat-console` to the terminal.
+You can see mining process by type `miner` to the terminal.
 
-**Ctrl + A** | **Crtl + D** to safety close the `minerstat-console`.
+**Ctrl + A** | **Crtl + D** to safety close your running miner.
 
 **Ctrl + C** command quit from the process / close minerstat.
 

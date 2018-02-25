@@ -4,25 +4,33 @@
 ![Latest](https://img.shields.io/github/last-commit/coinscrow/minerstat-linux.svg)
 
 NOTICE IT HAS BEEN DESIGNED TO WORK WITH minerstat OS! 
-https://distro.minerstat.com
-
-# Dependencies
-- Linux Ubuntu / lUbuntu 16.04.3 LTS
 
 # First Steps
 
 1) Register a new account on https://minerstat.com
 2) Create a new worker (Node, Linux , AMD/Nvidia)
 3) Mofify your configs in Config Editor -> Save
+4) Download minerstat OS https://distro.minerstat.com
+
+More info: https://distro.minerstat.com/doc.html
 
 # Commands
 
 ```
-mstart | Start mining with console & mining output
+miner     | show miner screen.
 
-mstop | Stop mining and minerstat
+mstart    | (re)start mining progress.
 
-miner | View mining output
+mstop     | close mining progress.
+
+mrecovery | restore everything to default. (all data and miner config stay in safe)
+
+mupdate   | update miners, clients. (Auto update only starts on boot)
+
+mreconf   | simulate first boot: configure DHCP, creating fake dummy for NVIDIA (ideal, if overclocking not work)
+
+mhelp     | List all available commands.
+
 ```
 
 # Informations

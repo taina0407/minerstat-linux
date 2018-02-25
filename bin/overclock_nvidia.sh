@@ -25,7 +25,7 @@ MEMORYOFFSET=$4
 COREOFFSET=$5
 
 sudo nvidia-smi -pm 1
-sudo nvidia-settings -c :0 -a [gpu:'"$GPUID"']/GPUPowerMizerMode=1 | grep "Attribute"
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUPowerMizerMode=1' | grep "Attribute"
 
 if [ "$POWERLIMITINWATT" -ne 0 ]
 then

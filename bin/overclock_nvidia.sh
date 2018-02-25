@@ -29,7 +29,7 @@ sudo nvidia-settings -c :0 -a '[gpu:"$GPUID"]/GPUPowerMizerMode=1' | grep "Attri
 
 # TESING PERFORMANCE LEVEL
 
-QUERY="$(sudo nvidia-settings -c :0 -a [gpu:"'$GPUID'"]/GPUMemoryTransferRateOffset[3]=100)"
+QUERY="$(sudo nvidia-settings -c :0 -a [gpu:"$GPUID"]/GPUMemoryTransferRateOffset[3]=100)"
 
 if echo "$QUERY" | grep "Attri" ;then
 PLEVEL=3

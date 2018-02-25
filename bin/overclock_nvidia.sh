@@ -27,6 +27,18 @@ COREOFFSET=$5
 sudo nvidia-smi -pm 1
 sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUPowerMizerMode=1' | grep "Attribute"
 
+# TESING PERFORMANCE LEVEL
+
+QUERY="$(sudo nvidia-settings -c :0 -a [gpu:0]/GPUMemoryTransferRateOffset[3]=100)"
+
+if echo "$QUERY" | grep "Attri" ;then
+PLEVEL=3
+else
+PLEVEL=2
+fi
+
+sleep 1
+
 if [ "$POWERLIMITINWATT" -ne 0 ]
 then
 if [ "$POWERLIMITINWATT" != "skip" ]
@@ -42,12 +54,12 @@ fi
 
 if [ "$MEMORYOFFSET" != "skip" ]
 then
-sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUMemoryTransferRateOffset[3]='"$MEMORYOFFSET"''
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUMemoryTransferRateOffset['"$PLEVEL"']='"$MEMORYOFFSET"''
 fi
 
 if [ "$COREOFFSET" != "skip" ]
 then
-sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUGraphicsClockOffset[3]='"$COREOFFSET"''
+sudo nvidia-settings -c :0 -a '[gpu:'"$GPUID"']/GPUGraphicsClockOffset['"$PLEVEL"']='"$COREOFFSET"''
 fi
 
 

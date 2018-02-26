@@ -38,6 +38,10 @@ echo "WORKER: $WORKER"
 
 echo "--------------------------"
 
+sudo rm doclock.sh
+
+sleep 1
+
 if [ ! -z "$DONVIDIA" ]; then
 
 wget -qO doclock.sh "https://minerstat.com/getclock.php?type=nvidia&token=$TOKEN&worker=$WORKER"

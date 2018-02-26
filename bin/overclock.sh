@@ -30,8 +30,8 @@ fi
 echo ""
 echo "--------------------------"
 
-TOKEN="$(cat ../config.js | grep 'global.accesskey' | sed 's/global.accesskey =//g' | sed 's/;//g')"
-WORKER="$(cat ../config.js | grep 'global.worker' | sed 's/global.worker =//g' | sed 's/;//g')"
+TOKEN="$(cat /home/minerstat/minerstat-linux/config.js | grep 'global.accesskey' | sed 's/global.accesskey =//g' | sed 's/;//g')"
+WORKER="$(cat /home/minerstat/minerstat-linux/config.js | grep 'global.worker' | sed 's/global.worker =//g' | sed 's/;//g')"
 
 echo "TOKEN: $TOKEN"
 echo "WORKER: $WORKER"

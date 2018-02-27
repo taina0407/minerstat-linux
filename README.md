@@ -1,94 +1,51 @@
-# Minerstat.com [Linux] -  v0.7 
+# Minerstat.com [Linux] -  v0.8
 
 ![Version](https://img.shields.io/github/release/coinscrow/minerstat-linux.svg)
 ![Latest](https://img.shields.io/github/last-commit/coinscrow/minerstat-linux.svg)
 
-> [STABLE] it can run weeks without downtime!
-
-# Dependencies
-- Linux Ubuntu / lUbuntu 16.04.3 LTS |RECOMMENDED|
-- Linux Ubuntu / lUbuntu 17.10.1 (NOT TESTED BY US, BUT SHOULD WORK)
+NOTICE: IT HAS BEEN DESIGNED TO WORK WITH minerstat OS! 
 
 # First Steps
 
 1) Register a new account on https://minerstat.com
 2) Create a new worker (Node, Linux , AMD/Nvidia)
 3) Mofify your configs in Config Editor -> Save
+4) Download minerstat OS https://distro.minerstat.com
 
-# How to install on Linux (Ubuntu) ?
-
-1) Open Terminal and Type:
-
-```
-wget https://raw.githubusercontent.com/coinscrow/minerstat-linux/master/install.sh; chmod 777 install.sh; sh install.sh
-```
-* Make sure you give correct login token and worker name to the install script (!case sensitive!).
-
-2) After the install script you are ready to use our Linux Client!
-
+More info: https://distro.minerstat.com/doc.html
 
 # Commands
 
 ```
-minerstat-start | Start mining with console & mining output
+miner     | show miner screen.
 
-minerstat-stop | Stop mining and minerstat
+mstart    | (re)start mining progress.
 
-minerstat-start-bg | Same as minerstat-start just in the background, ideal for SSH
+mstop     | close mining progress.
 
-minerstat-console | View mining output (Only for BG mod)
+mrecovery | restore everything to default. (all data and miner config stay in safe)
+
+mupdate   | update miners, clients. (Auto update only starts on boot)
+
+mreconf   | simulate first boot: configure DHCP, creating fake dummy for NVIDIA (ideal, if overclocking not work)
+
+mhelp     | List all available commands.
+
 ```
 
 # Informations
 
-You can see mining process by type `minerstat-console` to the terminal.
+You can see mining process by type `miner` to the terminal.
 
-**Ctrl + A** | **Crtl + D** to safety close the `minerstat-console`.
+**Ctrl + A** | **Crtl + D** to safety close your running miner.
 
 **Ctrl + C** command quit from the process / close minerstat.
 
-## Currently Supported Clients
-Profit Switch by Minerstat
-
-bminer (Nvidia Equihash miner)
-
-CCminer-Tpruvot (Nvidia Multi Miner)
-
-CCminer-Alexis (Nvidia - better Skein algo)
-
-CCminer-DJM34 (Nvidia XZC Miner)
-
-CCminer-Krnlx (Nvidia - Better Xevan algo)
-
-Ethminer (Nvidia/AMD EthHash Miner)
-
-Claymore-Dual (Nvidia/AMD ETH/DCR Miner)
-
-Claymore-Equihash (AMD ZEC Miner)
-
-Claymore-Cryptonote (AMD XMR Miner)
-
-Ewbf-Equihash (Nvidia ZEC Miner)
-
-SGMiner (NVIDIA/AMD Multi Algo)
-
-dstm's Zec [ZM-ZEC] (Nvidia Equihash miner)
-
-## Functions
-Switch miner from the website
-
-Modify miner settings from the website (pools etc..)
-
-Restart mining / Reboot Rig
-
-Hardware Monitor
-
-Profit Switch (Between Coins and Algos)
 
 ### Support
 Noticed something?
 Have you got any idea to make it better?
 
-Feel free to write us a message: **app @ minerstat.com**
+Feel free to write us a message: **hello @ minerstat.com**
 
 > © 2017-2018 - https://minerstat.com - Mining Monitor

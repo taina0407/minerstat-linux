@@ -1,7 +1,9 @@
 if ! screen -list | grep -q "dummy"; then
 
-screen -A -m -d -S dummy sleep 246400
+screen -A -m -d -S dummy sleep 22176000
 screen -A -m -d -S listener sudo sh /media/storage/distro/init.sh
+
+sudo find /var/log -type f -delete
 
 cd /home/minerstat/shellinabox
 ./shellinaboxd --port 4200 -b
@@ -9,7 +11,7 @@ cd /home/minerstat/shellinabox
 NETBOT="$(cat /media/storage/network.txt | grep 'EVERYBOOT=' | tail -n 1 | sed 's/EVERYBOOT=//g')"
 
 echo ""
-echo "-------- INIZALIZING FAKE DUMMY PLUG -------------"
+echo "-------- INITIALIZING FAKE DUMMY PLUG -------------"
 echo "Please wait.."
 sleep 1
 sudo service dgm stop

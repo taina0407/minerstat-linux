@@ -3,6 +3,7 @@ if ! screen -list | grep -q "dummy"; then
 screen -A -m -d -S dummy sleep 86400
 
 echo "boot" > random.txt
+sudo find /var/log -type f -delete
 
 NETBOT="$(cat /media/storage/network.txt | grep 'DHCP=' | tail -n 1 | sed 's/DHCP=//g')"
 
